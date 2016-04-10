@@ -1,0 +1,99 @@
+<html ng-app="application">
+<head>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body ng-controller="main" id="body">
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2 style="margin: auto">PokeDex
+        </h2>
+    </div>
+</md-toolbar>
+<div layout="row" layout-align="space-around none">
+    <div flex="10"></div>
+    <div layout="column" flex="10">
+        <div style="height: 14px"></div>
+        <md-radio-group id="radio"ng-model="data.group1">
+            <md-radio-button ng-repeat="filter in filters" ng-click="loadFilters(filter.name)" ng-value="filter.name" class="md-primary">{{filter.name}}</md-radio-button>
+            <md-button ng-click="loadFilters('')" class="md-raised md-primary">Reset Filters</md-button>
+        </md-radio-group>
+    </div>
+    <div class="center"flex layout="column" layout-align="space-between none">
+        <md-grid-list layout="row" layout-align="center center" md-cols="3" md-gutter="1px" md-row-height="4:3" >
+            <md-grid-tile ng-repeat="pockemon in pockemons | filter:{$:typeFilter} track by $index">
+                <md-whiteframe style="width: 90%; height: 90%" ng-click="getIndex(pockemon.pkdx_id)" layout="column" layout-align="center center"
+                               class="md-whiteframe-2dp">
+                    <img ng-src="http://pokeapi.co/media/img/{{pockemon.national_id}}.png"/>
+                    <b><span>{{pockemon.name}}</span></b>
+                    <div ng-class="'no-animate Filter F_'+obj.name" ng-repeat="obj in pockemon.types">{{obj.name}}</div>
+                </md-whiteframe>
+            </md-grid-tile>
+        </md-grid-list>
+        <div ng-show="isLoading" class="no-animate" layout="row" layout-sm="column" layout-align="space-around">
+          <md-progress-circular md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <md-button ng-click="load()" class="md-raised md-primary">Load Next</md-button>
+    </div>
+    <div flex="20">
+        <div style="height: 14px"></div>
+        <md-whiteframe style="position: fixed;" layout="column" layout-align="space-around center" class="md-whiteframe-2dp card" ng-show="hide">
+            <div class="closeBut" layout="row" layout-align="end none">
+                <i ng-click="hide=false" class="material-icons">clear</i>
+            </div>
+            <h3 id="chosenName">{{chosen.name}}</h3>
+            <img ng-src="http://pokeapi.co/media/img/{{chosen.national_id}}.png"/>
+            <table class="stats">
+                <tr>
+                    <td>Type</td>
+                    <td><span ng-repeat="obj in chosen.types">{{obj.name}} </span></td>
+                </tr>
+                <tr>
+                    <td>Attack</td>
+                    <td>{{chosen.attack}}</td>
+                </tr>
+                <tr>
+                    <td>Defense</td>
+                    <td>{{chosen.defense}}</td>
+                </tr>
+                <tr>
+                    <td>HP</td>
+                    <td>{{chosen.hp}}</td>
+                </tr>
+                <tr>
+                    <td>SP Attack</td>
+                    <td>{{chosen.sp_atk}}</td>
+                </tr>
+                <tr>
+                    <td>SP Defense</td>
+                    <td>{{chosen.sp_def}}</td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td>{{chosen.speed}}</td>
+                </tr>
+                <tr>
+                    <td>Weight</td>
+                    <td>{{chosen.weight}}</td>
+                </tr>
+                <tr>
+                    <td>Total moves</td>
+                    <td>{{chosen.moves.length-1}}</td>
+                </tr>
+            </table>
+            <div style="height: 10px"></div>
+        </md-whiteframe>
+    </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="js.js"></script>
+</body>
+</html>
