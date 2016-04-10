@@ -14,7 +14,7 @@ app.controller('main', function ($scope,$http,$window) {
     getData();
     function getData(){
         $scope.isLoading = true;
-       $http.get("http://pokeapi.co/api/v1/pokemon/?limit=12").success(function(data){
+       $http.get("https://pokeapi.co/api/v1/pokemon/?limit=12").success(function(data){
            for (var i=0; i<data.objects.length; i++) {
                $scope.pockemons.push(data.objects[i]);
                $scope.pockemons.next=data.meta.next;
@@ -33,7 +33,7 @@ app.controller('main', function ($scope,$http,$window) {
     }
     $scope.load = function(){
         $scope.isLoading = true;
-        $http.get("http://pokeapi.co/"+$scope.pockemons.next).success(function(data){
+        $http.get("https://pokeapi.co/"+$scope.pockemons.next).success(function(data){
             for (var i=0; i<data.objects.length; i++) {
                 $scope.pockemons.push(data.objects[i]);
                 $scope.pockemons.next=data.meta.next;
@@ -49,7 +49,7 @@ app.controller('main', function ($scope,$http,$window) {
         }
     }
     $scope.getFilters = function () {
-        $http.get('http://pokeapi.co/api/v1/type/?limit=999').then(function (response) {
+        $http.get('https://pokeapi.co/api/v1/type/?limit=999').then(function (response) {
             $scope.filters = response.data.objects;
         })
     }
