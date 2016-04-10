@@ -19,17 +19,14 @@ app.controller('main', function ($scope,$http,$window) {
                $scope.pockemons.push(data.objects[i]);
                $scope.pockemons.next=data.meta.next;
            }
-           console.log(data);
-           console.log($scope.pockemons);
            $scope.isLoading = false;
        });
     }
     $scope.getIndex = function(id) {
-        console.log("id" + id)
+
         $scope.pockemons.forEach(function (pockemon) {
             if(pockemon.pkdx_id==id){
                 $scope.chosen=pockemon;
-                console.log($scope.pockemon);
                 $scope.hide=true;
             }
         })
@@ -41,8 +38,6 @@ app.controller('main', function ($scope,$http,$window) {
                 $scope.pockemons.push(data.objects[i]);
                 $scope.pockemons.next=data.meta.next;
             }
-            console.log(data);
-            console.log($scope.pockemons);
             $scope.isLoading = false;
         });
     }
@@ -56,7 +51,6 @@ app.controller('main', function ($scope,$http,$window) {
     $scope.getFilters = function () {
         $http.get('http://pokeapi.co/api/v1/type/?limit=999').then(function (response) {
             $scope.filters = response.data.objects;
-            console.log($scope.filters);
         })
     }
     $scope.getFilters();
