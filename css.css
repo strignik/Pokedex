@@ -1,0 +1,99 @@
+div{
+    transition-property: all;
+    transition: 2s linear;
+}
+td{
+    border: 1px solid black;
+}
+table{
+    border-collapse: collapse;
+    width: 190px;
+}
+.closeBut{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+#chosenName{
+    margin-top: 5px;
+}
+.card{
+    min-width: 250px;
+    -webkit-animation-name: card;
+    animation-name: card;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+.Filter{
+    padding: 0.2em;
+    border-radius: 3px;
+}
+.F_Normal{
+    background-color: green;
+}
+.F_Fighting{
+    background-color: red;
+}
+.F_Flying{
+    background-color: #F4A460;
+}
+.F_Poison{
+    background-color: orange;
+}
+.F_Ground{
+    background-color: brown;
+}
+.F_Rock{
+    background-color: grey;
+}
+.F_Bug{
+    background-color: #DDA0DD;
+}
+.F_Ghost{
+    background-color: white;
+}
+.F_Steel{
+    background-color: #008B8B;
+}
+.F_Fire{
+    background-color: #8B0000;
+}
+.F_Water{
+    background-color: #00BFFF;
+}
+.F_Grass{
+    background-color: #228B22;
+}
+.F_Electric{
+    background-color: #FFFACD;
+}
+.F_Ice{
+    background-color: #87CEFA;
+}
+.F_Dragon{
+    background-color: #800000;
+}
+.F_Dark{
+    background-color: #BC8F8F;
+}
+.F_Fairy{
+    background-color: tan;
+}
+.F_Unknown{
+    background-color: #FA8072;
+}
+.F_Shadow{
+    background-color: #D8BFD8;
+}
+.F_Psychic{
+    background-color: #98FB98;
+}
+
+#radio{
+}
+.no-animate {
+   -webkit-transition: none !important;
+   transition: none !important;
+}
+input:focus { outline: none; }
